@@ -77,19 +77,19 @@ body{background:var(--bg)}
     <div class="figure-base" id="figureCaption"><strong>In through the nose.</strong> Out gently and easily.</div>
   </div>
   <div class="coach">
-    <div class="subheading"><span><span class="dot"></span>GUIDED BREATHING</span><span class="tag" id="modeTag">4 IN · 6 OUT</span></div>
+    <div class="subheading"><span><span class="dot"></span>GUIDED BREATHING</span><span class="tag" id="modeTag">3 IN · 5 OUT</span></div>
     <div class="phase-block"><div class="phase" id="phaseText" aria-live="polite" aria-atomic="true">Ready when you are</div><div class="phasehelp" id="phaseHelp">Take a comfortable position and press Start.</div></div>
     <div class="clock"><svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-bg" cx="90" cy="90" r="78" fill="none" stroke-width="7"/><circle id="dial" class="dial-progress" cx="90" cy="90" r="78" fill="none" stroke-width="7" stroke-dasharray="490.088" stroke-dashoffset="490.088"/></svg><div style="display:flex;align-items:center;flex-direction:column"><div class="digit" id="counter" aria-label="Seconds remaining">—</div><div class="seconds">SECONDS</div></div></div>
     <div class="bars" aria-hidden="true"><span class="barlabel">IN</span><div class="bar" id="inBar"><i id="inFill"></i></div><div class="bar" id="outBar"><i id="outFill"></i></div><span class="barlabel">OUT</span></div>
     <div class="controls"><button class="primary" id="startBtn"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5a1 1 0 0 1 1.54-.84l10 6.5a1 1 0 0 1 0 1.68l-10 6.5A1 1 0 0 1 8 18.5Z"/></svg><span id="startText">Start breathing</span></button><button class="secondary" id="resetBtn" aria-label="Reset breathing session" title="Reset session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button></div>
-    <div class="stats"><div><div class="stat-label">SESSION LEFT</div><div class="stat-val" id="timeLeft">5:00</div></div><div><div class="stat-label">BREATHS COMPLETED</div><div class="stat-val" id="cycles">0</div></div></div>
+    <div class="stats"><div><div class="stat-label">SESSION LEFT</div><div class="stat-val" id="timeLeft">2:00</div></div><div><div class="stat-label">BREATHS COMPLETED</div><div class="stat-val" id="cycles">0</div></div></div>
     <div class="track" aria-label="Session progress"><i id="sessionTrack"></i></div>
   </div>
 </section>
 <details class="settings" id="settings"><summary><span>Customize your breathing <span class="small">Choose a pace that feels natural</span></span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="settings-body">
-  <div class="sectionlabel">BREATHING RHYTHM</div><div class="presetrow" id="presets"><button data-in="4" data-out="6" class="choice active">Calm · 4 / 6</button><button data-in="4" data-out="4" class="choice">Balanced · 4 / 4</button><button data-in="3" data-out="5" class="choice">Gentle · 3 / 5</button></div>
-  <div class="setgrid"><label><div class="rangehead"><span>Inhale duration</span><output id="inValue">4s</output></div><input aria-label="Seconds to inhale" type="range" min="3" max="6" step="1" value="4" id="inSlider"></label><label><div class="rangehead"><span>Exhale duration</span><output id="outValue">6s</output></div><input aria-label="Seconds to exhale" type="range" min="4" max="8" step="1" value="6" id="outSlider"></label></div>
-  <div class="sectionlabel">SESSION LENGTH</div><div class="durrow" id="durations"><button data-mins="2" class="choice">2 minutes</button><button data-mins="5" class="choice active">5 minutes</button><button data-mins="10" class="choice">10 minutes</button><button data-mins="0" class="choice">No limit</button></div>
+  <div class="sectionlabel">BREATHING RHYTHM</div><div class="presetrow" id="presets"><button data-in="4" data-out="6" class="choice">Calm · 4 / 6</button><button data-in="4" data-out="4" class="choice">Balanced · 4 / 4</button><button data-in="3" data-out="5" class="choice active">Gentle · 3 / 5</button></div>
+  <div class="setgrid"><label><div class="rangehead"><span>Inhale duration</span><output id="inValue">3s</output></div><input aria-label="Seconds to inhale" type="range" min="3" max="6" step="1" value="3" id="inSlider"></label><label><div class="rangehead"><span>Exhale duration</span><output id="outValue">5s</output></div><input aria-label="Seconds to exhale" type="range" min="4" max="8" step="1" value="5" id="outSlider"></label></div>
+  <div class="sectionlabel">SESSION LENGTH</div><div class="durrow" id="durations"><button data-mins="2" class="choice active">2 minutes</button><button data-mins="5" class="choice">5 minutes</button><button data-mins="10" class="choice">10 minutes</button><button data-mins="0" class="choice">No limit</button></div>
   <label class="preference"><input type="checkbox" id="chimeToggle"> Gentle sound at each breath change (off by default)</label>
   <div id="configNote" class="review" role="status">Changes will apply when you restart the session.</div>
 </div></details>
@@ -99,12 +99,12 @@ body{background:var(--bg)}
 'use strict';
 const $=id=>document.getElementById(id);
 const STORAGE='breathe_calm_v1';
-const defaults={inhale:4,exhale:6,mins:5,chime:false,theme:'dark',day:'',todayCount:0};
+const defaults={inhale:3,exhale:5,mins:2,chime:false,theme:'dark',day:'',todayCount:0};
 let config={...defaults};
 try {const raw=JSON.parse(localStorage.getItem(STORAGE)||'{}'); config={...defaults,...raw};}catch{}
-config.inhale=Math.min(6,Math.max(3,Number(config.inhale)||4));
-config.exhale=Math.min(8,Math.max(4,Number(config.exhale)||6));
-config.mins=[0,2,5,10].includes(Number(config.mins))?Number(config.mins):5;
+config.inhale=Math.min(6,Math.max(3,Number(config.inhale)||defaults.inhale));
+config.exhale=Math.min(8,Math.max(4,Number(config.exhale)||defaults.exhale));
+config.mins=[0,2,5,10].includes(Number(config.mins))?Number(config.mins):defaults.mins;
 if(!['dark','light'].includes(config.theme)) config.theme='dark';
 const today=new Date().toLocaleDateString('en-CA');
 if(config.day!==today){config.day=today;config.todayCount=0;}
