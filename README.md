@@ -32,4 +32,4 @@ Breathe gently and comfortably. Stop if you feel dizzy, short of breath, or unco
 
 ## Visual asset
 
-`assets/breathing-man-reference.png` was generated with the built-in image generation tool. It is a synthetic photographic image, not footage of a real breathing instructor. The app animates a small region of the chest; pause and reduced-motion settings stop that movement.
+`assets/breathing-man-proportioned.png` was generated with the built-in image generation tool. It is a synthetic photographic image, not footage of a real breathing instructor. The app animates a small region of the chest; pause and reduced-motion settings stop that movement.
