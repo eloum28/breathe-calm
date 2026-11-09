@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d2932">
+<meta name="description" content="A gentle, visual breathing guide. Follow the movement, not the worry.">
+<title>Breathe Calm · Guided Breathing</title>
+<style>
+:root { color-scheme: dark; --bg:#091f29; --panel:#103440; --panel2:#113a46; --ink:#f5fcfa; --muted:#b3c8ce; --soft:#72949c; --accent:#71e1ca; --accent2:#b4f2de; --line:rgba(220,255,246,.12); --glass:rgba(255,255,255,.055); --shadow:0 22px 70px rgba(1,19,25,.23); --phase:#71e1ca; }
+:root[data-theme="light"] { color-scheme: light; --bg:#e9f2ef; --panel:#fffdfa; --panel2:#f5faf8; --ink:#183a40; --muted:#5a7778; --soft:#799394; --accent:#167c73; --accent2:#148a7a; --line:rgba(14,75,72,.13); --glass:rgba(32,126,110,.045); --shadow:0 24px 64px rgba(30,72,65,.1); --phase:#18887e; }
+* { box-sizing:border-box } html{min-height:100%;} body {margin:0;min-height:100vh;background:radial-gradient(ellipse 85% 60% at 15% 0%,rgba(64,168,157,.14),transparent 65%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45;transition:background .35s,color .35s;}
+button,input,select{font:inherit;} button{cursor:pointer} button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+main {max-width:1110px;margin:0 auto;padding:27px 25px 40px;} .nav{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:36px}.brand{display:flex;align-items:center;gap:13px;font-weight:800;letter-spacing:-.04em;font-size:21px}.brandmark{display:grid;place-items:center;width:43px;height:43px;background:linear-gradient(145deg,#70e2c4,#2c9caa);border-radius:15px;box-shadow:0 10px 23px rgba(39,163,147,.16)} .brandmark svg{width:27px;height:27px}.navright{display:flex;align-items:center;gap:11px}.streak{color:var(--muted);font-size:12px;background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:9px 13px;white-space:nowrap}.iconbutton{height:42px;width:42px;border-radius:14px;background:var(--glass);color:var(--ink);border:1px solid var(--line);display:grid;place-items:center}.iconbutton svg{width:19px;height:19px}.sun-icon{display:block}.moon-icon{display:none} :root[data-theme="light"] .sun-icon{display:none} :root[data-theme="light"] .moon-icon{display:block}
+.heading{margin-bottom:30px}.eyebrow{font-size:12px;letter-spacing:.18em;font-weight:750;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:9px;margin-bottom:10px}.eyebrow span{display:block;width:23px;height:1px;background:var(--accent)}.heading h1{font-weight:750;letter-spacing:-.054em;font-size:clamp(29px,4vw,47px);margin:0 0 10px;line-height:1.09}.heading p{font-size:15px;color:var(--muted);margin:0;max-width:640px}
+.columns{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:20px}.visual,.coach{border-radius:29px;border:1px solid var(--line);min-width:0;overflow:hidden;position:relative;box-shadow:var(--shadow);}.visual{background:radial-gradient(circle at 50% 44%, rgba(69,190,173,.16),transparent 49%),linear-gradient(145deg,#123b46,#0b2a35);height:560px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:24px 20px 14px;isolation:isolate}.visual:after{content:"";position:absolute;inset:16px;border-radius:22px;border:1px solid rgba(220,255,246,.05);pointer-events:none}.visual-top{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#cbe4df;z-index:2}.visual-top .pill{background:rgba(206,255,237,.09);border:1px solid rgba(214,255,241,.16);border-radius:999px;padding:8px 13px;font-size:11px;letter-spacing:.13em;font-weight:800}.visual-top .hint{font-size:12px;color:#b4d0d2}.figure-wrap{display:flex;align-items:center;justify-content:center;flex:1;width:100%;position:relative;min-height:0}.figure-wrap::before{content:"";width:67%;aspect-ratio:1;background:radial-gradient(circle,rgba(89,224,194,.12),transparent 69%);filter:blur(8px);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)} .figure-svg{width:min(100%,450px);height:440px;max-height:100%;overflow:visible;position:relative;z-index:1}.aura{transform-origin:230px 250px;transition:transform .15s linear,opacity .5s;will-change:transform}.torso{transform-origin:230px 305px;will-change:transform;transition:transform .11s linear}.belly-glow{transform-origin:230px 314px;will-change:transform;transition:transform .11s linear}.airflow{opacity:0;transition:opacity .45s;stroke-dasharray:7 11;stroke-dashoffset:0;animation:stream 2.5s linear infinite}.visual.inhale .airflow{opacity:.8;animation-direction:normal}.visual.exhale .airflow{opacity:.5;animation-direction:reverse}.figure-base{position:relative;z-index:2;color:#c0d9d4;text-align:center;font-size:13px;letter-spacing:.01em;padding-bottom:7px}.figure-base strong{color:#9cf0d9;font-weight:750}
+.coach{background:var(--panel);padding:29px 30px;display:flex;flex-direction:column;min-height:560px}.subheading{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.02em}.subheading .dot{display:inline-block;border-radius:100%;width:8px;height:8px;background:var(--phase);box-shadow:0 0 20px var(--phase);margin-right:8px}.subheading .tag{font-size:11px;letter-spacing:.09em;padding:6px 9px;background:var(--glass);border-radius:8px;color:var(--muted)}.phase-block{margin:28px 0 22px;text-align:center}.phase{color:var(--accent);font-weight:750;font-size:clamp(29px,4vw,43px);letter-spacing:-.045em;line-height:1.12}.phasehelp{font-size:13px;color:var(--muted);margin-top:8px;min-height:19px}.clock{position:relative;margin:8px auto 13px;width:180px;height:180px;display:grid;place-items:center}.clock svg{position:absolute;inset:0;transform:rotate(-90deg)}.clock .dial-bg{stroke:var(--line)}.clock .dial-progress{stroke:var(--accent);stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(113,225,202,.3));transition:stroke .3s}.digit{font-size:91px;line-height:1;letter-spacing:-.09em;font-weight:740;font-variant-numeric:tabular-nums;transform:translateX(-3px)}.digit.small{font-size:62px;letter-spacing:-.05em}.seconds{color:var(--muted);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;margin-top:-25px}.bars{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:23px}.bar{height:4px;width:70px;border-radius:99px;background:var(--line);overflow:hidden}.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .1s linear}.bar.on>i{width:100%}.barlabel{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--muted)}.controls{display:flex;gap:10px;width:100%;}.primary{flex:1;min-height:56px;border:0;background:linear-gradient(135deg,#80e7d0,#59c9b5);border-radius:16px;color:#082c32;font-weight:800;font-size:16px;box-shadow:0 10px 24px rgba(85,209,181,.15);display:flex;justify-content:center;align-items:center;gap:9px}.primary:hover{filter:brightness(1.05)}.primary svg{width:19px}.secondary{height:56px;min-width:58px;display:grid;place-items:center;background:var(--glass);color:var(--ink);border:1px solid var(--line);border-radius:16px}.secondary svg{width:20px;height:20px}.secondary:disabled{opacity:.38;cursor:not-allowed}.stats{margin-top:auto;padding-top:20px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat-label{color:var(--muted);font-size:11px;letter-spacing:.04em}.stat-val{font-size:23px;letter-spacing:-.035em;font-weight:780;margin-top:2px;line-height:1.18;font-variant-numeric:tabular-nums}.track{height:5px;border-radius:99px;background:var(--line);margin-top:17px;overflow:hidden}.track>i{display:block;background:var(--accent);width:0;height:100%;transition:width .3s linear}
+.settings{margin-top:20px;background:var(--panel);border:1px solid var(--line);border-radius:23px;box-shadow:var(--shadow);overflow:hidden}.settings summary{list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:21px 24px;color:var(--ink);font-weight:760}.settings summary::-webkit-details-marker{display:none}.settings summary .small{font-size:12px;font-weight:500;color:var(--muted);margin-left:9px}.chevron{width:17px;transition:transform .2s}.settings[open] .chevron{transform:rotate(180deg)}.settings-body{border-top:1px solid var(--line);padding:23px 25px 26px}.sectionlabel{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:11px}.presetrow,.durrow{display:flex;gap:8px;flex-wrap:wrap}.choice{border:1px solid var(--line);border-radius:11px;padding:10px 15px;background:var(--glass);color:var(--ink);font-size:13px;font-weight:680}.choice.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}.setgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:21px 0}.rangehead{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:13px;color:var(--ink);font-weight:690}.rangehead output{font-size:22px;font-weight:780;color:var(--accent);font-variant-numeric:tabular-nums}.setgrid input[type=range]{width:100%;margin:15px 0 1px;accent-color:var(--accent)}.preference{margin-top:21px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);cursor:pointer}.preference input{width:16px;height:16px;accent-color:var(--accent)}.footer{display:flex;justify-content:space-between;align-items:start;gap:20px;margin:23px 5px 0;color:var(--muted);font-size:12px}.footer .quote{font-size:15px;color:var(--accent2);font-weight:600;max-width:45%}.safety{max-width:50%;text-align:right}.review{display:none;margin-top:13px;padding:13px 15px;background:rgba(111,219,189,.1);border:1px solid rgba(111,219,189,.24);border-radius:12px;color:var(--ink);font-size:13px}.review.show{display:block}
+.visual.paused .airflow{animation-play-state:paused}
+@keyframes stream{from{stroke-dashoffset:0}to{stroke-dashoffset:-72}}
+@media (max-width:840px){main{padding:20px 16px 38px}.nav{margin-bottom:28px}.columns{grid-template-columns:1fr;gap:13px}.visual{height:440px}.figure-svg{height:340px}.coach{min-height:auto;padding:24px 23px}.phase-block{margin:18px 0 8px}.clock{width:160px;height:160px}.clock svg{width:160px;height:160px}.digit{font-size:81px}.seconds{margin-top:-23px}.stats{margin-top:23px}.heading h1{font-size:34px}.heading{margin-bottom:22px}.footer{flex-direction:column;gap:8px}.footer .quote,.safety{max-width:100%;text-align:left}.streak{display:none}}
+@media (max-width:470px){.nav{margin-bottom:22px}.heading h1{font-size:31px}.heading p{font-size:14px}.visual{height:350px;padding:17px 13px 8px;border-radius:22px}.figure-svg{height:275px}.figure-base{font-size:11px}.visual-top .hint{font-size:10px}.visual-top .pill{font-size:9px;padding:7px 10px}.coach{border-radius:22px;padding:20px}.phase-block{margin:13px 0 7px}.phase{font-size:35px}.phasehelp{font-size:12px}.clock{width:142px;height:142px}.clock svg{width:142px;height:142px}.digit{font-size:74px}.bars{margin-bottom:16px}.stats{padding-top:15px;margin-top:17px}.stat-val{font-size:21px}.setgrid{grid-template-columns:1fr;gap:17px}.settings summary{padding:18px 17px}.settings-body{padding:20px 16px}.settings summary .small{display:none}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.aura,.torso,.belly-glow{transform:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header class="nav">
+  <div class="brand"><div class="brandmark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M6 23c7-13 13-13 14 0 2-13 9-13 15 0" stroke="#073b40" stroke-width="3.6" stroke-linecap="round"/><path d="M20 9v21" stroke="#073b40" stroke-width="3" stroke-linecap="round"/></svg></div><span>breathe<span style="color:var(--accent)">.</span></span></div>
+  <div class="navright"><span class="streak" id="dailyStat">A moment for yourself</span><button class="iconbutton" id="themeBtn" aria-label="Switch color theme" title="Switch theme"><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20.4 15.7A8.5 8.5 0 0 1 8.3 3.6 8.5 8.5 0 1 0 20.4 15.7Z"/></svg></button></div>
+</header>
+<section class="heading"><div class="eyebrow"><span></span> YOUR MOMENT OF CALM</div><h1>Breathe in calm.<br>Breathe out tension.</h1><p>Follow the gentle movement of the body. A few mindful breaths can help you make space between a feeling and your response.</p></section>
+<section class="columns">
+  <div class="visual" id="visual" aria-label="Animated seated person demonstrating gentle breathing">
+    <div class="visual-top"><span class="pill">FOLLOW THE MOVEMENT</span><span class="hint" id="motionHint">Chest softly rises and falls</span></div>
+    <div class="figure-wrap">
+      <svg class="figure-svg" id="figure" viewBox="0 0 460 460" role="img" aria-label="Seated man, chest expands while inhaling and releases while exhaling">
+        <defs>
+          <radialGradient id="auragrad"><stop offset="0" stop-color="#66d9bb" stop-opacity=".26"/><stop offset=".67" stop-color="#56d4b9" stop-opacity=".11"/><stop offset="1" stop-color="#56d4b9" stop-opacity="0"/></radialGradient>
+          <linearGradient id="shirt" x1="0" x2="1" y1=".15" y2="1"><stop stop-color="#a7e8d7"/><stop offset=".45" stop-color="#6bbab2"/><stop offset="1" stop-color="#367986"/></linearGradient>
+          <linearGradient id="face" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edbc9d"/><stop offset="1" stop-color="#bc7d61"/></linearGradient>
+          <linearGradient id="pants" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#4a8294"/><stop offset="1" stop-color="#1d5365"/></linearGradient>
+          <linearGradient id="sleeve" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#78cabe"/><stop offset="1" stop-color="#3a8890"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="5"/></filter>
+        </defs>
+        <ellipse cx="230" cy="429" rx="173" ry="16" fill="#041e28" opacity=".33"/>
+        <g class="aura" id="aura"><circle cx="230" cy="235" r="178" fill="url(#auragrad)"/><circle cx="230" cy="242" r="128" fill="none" stroke="#8fe5c4" stroke-opacity=".14" stroke-width="1.6"/><circle cx="230" cy="241" r="156" fill="none" stroke="#8fe5c4" stroke-opacity=".075" stroke-width="1"/></g>
+        <g fill="none" stroke="#9bf6e0" stroke-width="2.7" stroke-linecap="round" class="airflow"><path d="M71 203C102 188 131 194 159 215"/><path d="M73 228c36-14 52-11 82 2"/><path d="M388 203c-31-15-60-9-88 12"/><path d="M389 228c-36-14-52-11-82 2"/></g>
+        <!-- Cross-legged silhouette -->
+        <path d="M119 344c-20 1-72 25-76 58-4 29 43 37 97 31l92-4 91 4c56 5 97-5 94-31-3-32-59-57-80-58" fill="url(#pants)" stroke="#276275" stroke-width="3"/>
+        <path d="M81 410c47-24 100-27 149-13 49-14 105-10 151 13" fill="none" stroke="#88c4bc" stroke-opacity=".27" stroke-width="3"/>
+        <!-- relaxed arms behind torso -->
+        <path d="M162 238c-35 0-47 38-63 90-5 18-4 47 8 59 16 17 35-1 44-22l27-71" fill="url(#sleeve)" stroke="#2c7c86" stroke-width="3"/>
+        <path d="M298 238c35 0 48 39 64 90 5 18 4 47-9 59-15 16-34-1-43-22l-26-71" fill="url(#sleeve)" stroke="#2c7c86" stroke-width="3"/>
+        <!-- Neck -->
+        <path d="M207 194v33c0 13 8 21 23 21s23-8 23-21v-33" fill="url(#face)"/>
+        <!-- torso expands visibly -->
+        <g class="torso" id="torso">
+          <path d="M179 230c-23 0-41 16-43 41l-10 79c0 11 8 18 17 18h174c9 0 17-7 17-18l-10-79c-3-25-20-41-43-41-14 2-26 14-51 14s-37-12-51-14Z" fill="url(#shirt)" stroke="#397e86" stroke-width="2.8"/>
+          <path d="M189 230c8 23 20 33 41 33s34-10 41-33" stroke="#d1f5e7" stroke-opacity=".72" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M147 273c-3 34-6 57-5 73M313 273c3 34 6 57 5 73" fill="none" stroke="#d9f5e9" stroke-opacity=".23" stroke-width="2.8"/>
+          <ellipse class="belly-glow" id="bellyGlow" cx="230" cy="307" rx="54" ry="36" fill="#e4fff2" opacity=".085"/>
+          <path d="M190 293q40 20 80 0" fill="none" stroke="#dcfff2" stroke-opacity=".22" stroke-width="2"/>
+          <path d="M198 316q32 13 64 0" fill="none" stroke="#dcfff2" stroke-opacity=".18" stroke-width="2"/>
+        </g>
+        <!-- Lower arms and hands resting on knees -->
+        <path d="M118 343c-10 9-8 28 3 33 18 7 40 3 57 1" fill="none" stroke="#e4ad90" stroke-width="19" stroke-linecap="round"/>
+        <path d="M341 343c10 9 8 28-3 33-18 7-40 3-57 1" fill="none" stroke="#e4ad90" stroke-width="19" stroke-linecap="round"/>
+        <ellipse cx="180" cy="377" rx="19" ry="10" fill="#d9a183" transform="rotate(4 180 377)"/>
+        <ellipse cx="280" cy="377" rx="19" ry="10" fill="#d9a183" transform="rotate(-4 280 377)"/>
+        <!-- ears -->
+        <ellipse cx="181" cy="161" rx="11" ry="17" fill="#bd8569"/><ellipse cx="279" cy="161" rx="11" ry="17" fill="#bd8569"/>
+        <!-- face -->
+        <path d="M178 131c0-37 21-58 52-58 32 0 53 22 53 59v33c0 41-20 62-53 62s-52-21-52-62Z" fill="url(#face)" stroke="#af795f" stroke-width="1.7"/>
+        <!-- dark textured hair -->
+        <path d="M176 142c-7-41 12-72 55-72 39 0 60 30 52 70-5-10-11-26-13-33-17 9-49 13-77 4-3 14-8 23-17 31Z" fill="#26363b"/>
+        <path d="M181 119c6-36 42-48 74-31" fill="none" stroke="#58605e" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
+        <!-- peaceful eyes -->
+        <path d="M198 158c7 5 15 5 22 0M240 158c7 5 15 5 22 0" fill="none" stroke="#583b36" stroke-width="3" stroke-linecap="round"/>
+        <path d="M228 162l-3 19c3 3 6 4 10 1" fill="none" stroke="#a86b59" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M216 196q14 8 29 0" fill="none" stroke="#8e574b" stroke-width="2.8" stroke-linecap="round"/>
+        <!-- subtle cheek warmth -->
+        <ellipse cx="197" cy="183" rx="14" ry="7" fill="#dd917f" opacity=".18"/><ellipse cx="263" cy="183" rx="14" ry="7" fill="#dd917f" opacity=".18"/>
+      </svg>
+    </div>
+    <div class="figure-base" id="figureCaption"><strong>In through the nose.</strong> Out gently and easily.</div>
+  </div>
+  <div class="coach">
+    <div class="subheading"><span><span class="dot"></span>GUIDED BREATHING</span><span class="tag" id="modeTag">4 IN · 6 OUT</span></div>
+    <div class="phase-block"><div class="phase" id="phaseText" aria-live="polite" aria-atomic="true">Ready when you are</div><div class="phasehelp" id="phaseHelp">Take a comfortable position and press Start.</div></div>
+    <div class="clock"><svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-bg" cx="90" cy="90" r="78" fill="none" stroke-width="7"/><circle id="dial" class="dial-progress" cx="90" cy="90" r="78" fill="none" stroke-width="7" stroke-dasharray="490.088" stroke-dashoffset="490.088"/></svg><div style="display:flex;align-items:center;flex-direction:column"><div class="digit" id="counter" aria-label="Seconds remaining">—</div><div class="seconds">SECONDS</div></div></div>
+    <div class="bars" aria-hidden="true"><span class="barlabel">IN</span><div class="bar" id="inBar"><i id="inFill"></i></div><div class="bar" id="outBar"><i id="outFill"></i></div><span class="barlabel">OUT</span></div>
+    <div class="controls"><button class="primary" id="startBtn"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5a1 1 0 0 1 1.54-.84l10 6.5a1 1 0 0 1 0 1.68l-10 6.5A1 1 0 0 1 8 18.5Z"/></svg><span id="startText">Start breathing</span></button><button class="secondary" id="resetBtn" aria-label="Reset breathing session" title="Reset session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button></div>
+    <div class="stats"><div><div class="stat-label">SESSION LEFT</div><div class="stat-val" id="timeLeft">5:00</div></div><div><div class="stat-label">BREATHS COMPLETED</div><div class="stat-val" id="cycles">0</div></div></div>
+    <div class="track" aria-label="Session progress"><i id="sessionTrack"></i></div>
+  </div>
+</section>
+<details class="settings" id="settings"><summary><span>Customize your breathing <span class="small">Choose a pace that feels natural</span></span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="settings-body">
+  <div class="sectionlabel">BREATHING RHYTHM</div><div class="presetrow" id="presets"><button data-in="4" data-out="6" class="choice active">Calm · 4 / 6</button><button data-in="4" data-out="4" class="choice">Balanced · 4 / 4</button><button data-in="3" data-out="5" class="choice">Gentle · 3 / 5</button></div>
+  <div class="setgrid"><label><div class="rangehead"><span>Inhale duration</span><output id="inValue">4s</output></div><input aria-label="Seconds to inhale" type="range" min="3" max="6" step="1" value="4" id="inSlider"></label><label><div class="rangehead"><span>Exhale duration</span><output id="outValue">6s</output></div><input aria-label="Seconds to exhale" type="range" min="4" max="8" step="1" value="6" id="outSlider"></label></div>
+  <div class="sectionlabel">SESSION LENGTH</div><div class="durrow" id="durations"><button data-mins="2" class="choice">2 minutes</button><button data-mins="5" class="choice active">5 minutes</button><button data-mins="10" class="choice">10 minutes</button><button data-mins="0" class="choice">No limit</button></div>
+  <label class="preference"><input type="checkbox" id="chimeToggle"> Gentle sound at each breath change (off by default)</label>
+  <div id="configNote" class="review" role="status">Changes will apply when you restart the session.</div>
+</div></details>
+<footer class="footer"><div class="quote">“You can feel it without carrying it.”</div><div class="safety">Breathe gently, without forcing deeper or faster breaths. Stop if you feel dizzy, short of breath, or uncomfortable. This is a relaxation guide, not medical treatment.</div></footer>
+</main>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const STORAGE='breathe_calm_v1';
+const defaults={inhale:4,exhale:6,mins:5,chime:false,theme:'dark',day:'',todayCount:0};
+let config={...defaults};
+try {const raw=JSON.parse(localStorage.getItem(STORAGE)||'{}'); config={...defaults,...raw};}catch{}
+config.inhale=Math.min(6,Math.max(3,Number(config.inhale)||4));
+config.exhale=Math.min(8,Math.max(4,Number(config.exhale)||6));
+config.mins=[0,2,5,10].includes(Number(config.mins))?Number(config.mins):5;
+if(!['dark','light'].includes(config.theme)) config.theme='dark';
+const today=new Date().toLocaleDateString('en-CA');
+if(config.day!==today){config.day=today;config.todayCount=0;}
+function save(){try{localStorage.setItem(STORAGE,JSON.stringify(config));}catch{}}
+const session={status:'idle',phase:'inhale',phaseElapsed:0,total:0,cycles:0,last:0,raf:0,settledIn:config.inhale,settledOut:config.exhale,settledMins:config.mins,counted:false};
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+function renderSettings(){
+ $('inSlider').value=config.inhale; $('outSlider').value=config.exhale;
+ $('inValue').textContent=config.inhale+'s'; $('outValue').textContent=config.exhale+'s';
+ [...$('presets').querySelectorAll('button')].forEach(b=>{let on=+b.dataset.in===config.inhale&&+b.dataset.out===config.exhale;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});
+ [...$('durations').querySelectorAll('button')].forEach(b=>{let on=+b.dataset.mins===config.mins;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});
+ $('chimeToggle').checked=!!config.chime;
+ if(['running','paused'].includes(session.status)){$('configNote').classList.add('show')}else{$('configNote').classList.remove('show')}
+}
+function setTheme(){document.documentElement.dataset.theme=config.theme;$('themeBtn').setAttribute('aria-label',config.theme==='dark'?'Switch to light theme':'Switch to dark theme')}
+function setToday(){$('dailyStat').textContent=config.todayCount===0?'Your quiet place':`${config.todayCount} ${config.todayCount===1?'session':'sessions'} today`}
+function timeFmt(seconds){const s=Math.max(0,Math.ceil(seconds));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`}
+let ctx=null;
+function sound(){if(!config.chime)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();if(ctx.state==='suspended')ctx.resume();const t=ctx.currentTime;const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(540,t);osc.frequency.exponentialRampToValueAtTime(690,t+.27);gain.gain.setValueAtTime(.00001,t);gain.gain.exponentialRampToValueAtTime(.055,t+.035);gain.gain.exponentialRampToValueAtTime(.00001,t+.51);osc.connect(gain).connect(ctx.destination);osc.start(t);osc.stop(t+.53)}catch{}}
+function phaseSec(){return (session.phase==='inhale'?session.settledIn:session.settledOut)*1000}
+function start(){
+ if(session.status==='running'){pause();return;}
+ if(session.status==='paused'){session.status='running';session.last=performance.now();loop();return;}
+ session.status='running';session.phase='inhale';session.phaseElapsed=0;session.total=0;session.cycles=0;session.counted=false;session.settledIn=config.inhale;session.settledOut=config.exhale;session.settledMins=config.mins;session.last=performance.now();
+ $('settings').open=false;renderSettings();loop();
+}
+function pause(){if(session.status!=='running')return;session.status='paused';cancelAnimationFrame(session.raf);update();renderSettings();}
+function reset(){cancelAnimationFrame(session.raf);session.status='idle';session.phase='inhale';session.phaseElapsed=0;session.total=0;session.cycles=0;session.counted=false;session.settledIn=config.inhale;session.settledOut=config.exhale;session.settledMins=config.mins;update();renderSettings();}
+function finish(){session.status='done';cancelAnimationFrame(session.raf);if(!session.counted){config.todayCount++;save();setToday();session.counted=true;}update();renderSettings();sound()}
+function loop(){if(session.status!=='running')return;const now=performance.now();const dt=Math.max(0,now-session.last);session.last=now;const elapsed=session.settledMins>0?Math.min(dt,Math.max(0,session.settledMins*60000-session.total)):dt;session.total+=elapsed;session.phaseElapsed+=elapsed;let switched=false;
+ while(session.phaseElapsed>=phaseSec()&&session.status==='running'){
+   session.phaseElapsed-=phaseSec(); if(session.phase==='inhale'){session.phase='exhale'}else{session.phase='inhale';session.cycles++} switched=true;
+ }
+ if(switched)sound();
+ if(session.settledMins>0&&session.total>=session.settledMins*60000){session.total=session.settledMins*60000;finish();return;}
+ update();session.raf=requestAnimationFrame(loop);
+}
+function update(){
+ const status=session.status,active=['running','paused'].includes(status);
+ const inPhase=session.phase==='inhale';const duration=active?phaseSec():config.inhale*1000;
+ const progress=active?Math.min(1,session.phaseElapsed/duration):0;
+ const remaining=active?Math.max(1,Math.ceil((duration-session.phaseElapsed)/1000)):0;
+ const visual=$('visual');visual.classList.toggle('paused',status==='paused');visual.classList.toggle('inhale',active&&inPhase);visual.classList.toggle('exhale',active&&!inPhase);
+ document.documentElement.style.setProperty('--phase',inPhase?'var(--accent)':'#87b8ff');
+ if(status==='done'){$('phaseText').textContent='Beautifully done';$('phaseHelp').textContent='Notice how you feel. Carry the calm with you.';$('counter').textContent='✓';$('counter').classList.add('small');$('figureCaption').innerHTML='<strong>Well done.</strong> One gentle breath at a time.';}
+ else if(status==='idle'){$('phaseText').textContent='Ready when you are';$('phaseHelp').textContent='Take a comfortable position and press Start.';$('counter').textContent='—';$('counter').classList.remove('small');$('figureCaption').innerHTML='<strong>In through the nose.</strong> Out gently and easily.';}
+ else{$('phaseText').textContent=inPhase?'Inhale':'Exhale';$('phaseHelp').textContent=status==='paused'?'Paused. Resume when you feel ready.':inPhase?'Gently breathe in through your nose.':'Breathe out slowly and comfortably.';$('counter').textContent=String(remaining).padStart(2,'0');$('counter').classList.remove('small');$('figureCaption').innerHTML=inPhase?'<strong>Inhale.</strong> Let the chest rise gently.':'<strong>Exhale.</strong> Release the tension slowly.';}
+ $('modeTag').textContent=`${active?session.settledIn:config.inhale} IN · ${active?session.settledOut:config.exhale} OUT`;
+ const circ=2*Math.PI*78; $('dial').style.strokeDashoffset=String(circ*(1-progress));
+ $('inFill').style.width=active&&inPhase?`${progress*100}%`:active&&!inPhase?'100%':'0%';
+ $('outFill').style.width=active&&!inPhase?`${progress*100}%`:'0%';
+ $('cycles').textContent=String(session.cycles);
+ const mins=active||status==='done'?session.settledMins:config.mins;
+ $('timeLeft').textContent=mins===0?'∞':timeFmt(mins*60-(active||status==='done'?session.total:0)/1000);
+ $('sessionTrack').style.width=mins===0?'0%':`${Math.max(0,Math.min(100,(active||status==='done'?session.total:0)/(mins*60000)*100))}%`;
+ const b=$('startText'),icon=$('playIcon');
+ if(status==='running'){b.textContent='Pause';icon.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>'}
+ else{b.textContent=status==='paused'?'Resume':status==='done'?'Start again':'Start breathing';icon.innerHTML='<path d="M8 5.5a1 1 0 0 1 1.54-.84l10 6.5a1 1 0 0 1 0 1.68l-10 6.5A1 1 0 0 1 8 18.5Z"/>'}
+ $('resetBtn').disabled=status==='idle';
+ $('motionHint').textContent=status==='paused'?'Take your time':status==='done'?'You made space for yourself':inPhase&&active?'Softly expanding':'Chest softly rises and falls';
+ if(!reduceMotion.matches){const breath=active?(inPhase?progress:1-progress):0;
+ $('torso').style.transform=`scale(${1+breath*.057},${1+breath*.019})`;
+ $('aura').style.transform=`scale(${.94+breath*.18})`;
+ $('bellyGlow').style.transform=`scale(${1+breath*.1},${1+breath*.08})`;
+ }else{$('torso').style.transform='';$('aura').style.transform='';$('bellyGlow').style.transform='';}
+}
+function apply(){if(session.status==='done'){reset();}save();renderSettings();if(['idle','done'].includes(session.status)){session.settledIn=config.inhale;session.settledOut=config.exhale;session.settledMins=config.mins;}update()}
+$('startBtn').addEventListener('click',start);$('resetBtn').addEventListener('click',reset);
+$('themeBtn').addEventListener('click',()=>{config.theme=config.theme==='dark'?'light':'dark';setTheme();save()});
+$('presets').addEventListener('click',e=>{let b=e.target.closest('button[data-in]');if(!b)return;config.inhale=+b.dataset.in;config.exhale=+b.dataset.out;apply()});
+$('durations').addEventListener('click',e=>{let b=e.target.closest('button[data-mins]');if(!b)return;config.mins=+b.dataset.mins;apply()});
+$('inSlider').addEventListener('input',e=>{config.inhale=+e.target.value;apply()});$('outSlider').addEventListener('input',e=>{config.exhale=+e.target.value;apply()});
+$('chimeToggle').addEventListener('change',e=>{config.chime=!!e.target.checked;save()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&session.status==='running')pause()});
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&!e.repeat&&!['INPUT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement.tagName)){e.preventDefault();start()}});
+setTheme();setToday();renderSettings();update();save();
+})();
+</script>
+</body>
+</html>
