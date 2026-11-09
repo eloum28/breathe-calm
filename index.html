@@ -21,6 +21,20 @@ main {max-width:1110px;margin:0 auto;padding:27px 25px 40px;} .nav{display:flex;
 @media (max-width:840px){main{padding:20px 16px 38px}.nav{margin-bottom:28px}.columns{grid-template-columns:1fr;gap:13px}.visual{height:440px}.figure-svg{height:340px}.coach{min-height:auto;padding:24px 23px}.phase-block{margin:18px 0 8px}.clock{width:160px;height:160px}.clock svg{width:160px;height:160px}.digit{font-size:81px}.seconds{margin-top:-23px}.stats{margin-top:23px}.heading h1{font-size:34px}.heading{margin-bottom:22px}.footer{flex-direction:column;gap:8px}.footer .quote,.safety{max-width:100%;text-align:left}.streak{display:none}}
 @media (max-width:470px){.nav{margin-bottom:22px}.heading h1{font-size:31px}.heading p{font-size:14px}.visual{height:350px;padding:17px 13px 8px;border-radius:22px}.figure-svg{height:275px}.figure-base{font-size:11px}.visual-top .hint{font-size:10px}.visual-top .pill{font-size:9px;padding:7px 10px}.coach{border-radius:22px;padding:20px}.phase-block{margin:13px 0 7px}.phase{font-size:35px}.phasehelp{font-size:12px}.clock{width:142px;height:142px}.clock svg{width:142px;height:142px}.digit{font-size:74px}.bars{margin-bottom:16px}.stats{padding-top:15px;margin-top:17px}.stat-val{font-size:21px}.setgrid{grid-template-columns:1fr;gap:17px}.settings summary{padding:18px 17px}.settings-body{padding:20px 16px}.settings summary .small{display:none}}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.aura,.torso,.belly-glow{transform:none!important}}
+
+/* A quieter presentation around the photographic breathing guide. */
+body{background:var(--bg)}
+.heading h1{font-weight:600;letter-spacing:-.04em;font-size:clamp(29px,3.5vw,41px)}
+.heading p{font-weight:400;line-height:1.7}.eyebrow{font-weight:600;letter-spacing:.12em}
+.visual,.coach{border-radius:20px;box-shadow:none}.visual{background:linear-gradient(160deg,#263b39,#152c2e);padding-top:20px}
+.visual:after,.figure-wrap:before{display:none}.figure-svg.photo-figure{width:100%;height:100%;max-height:440px;overflow:visible}
+.visual-top .pill{background:none;border:0;padding-left:0;letter-spacing:.08em;font-weight:500}.visual-top .hint{font-weight:400}
+.figure-base{font-weight:400;font-size:12px}.figure-base strong{color:#d9e5dc;font-weight:500}
+.phase{font-weight:550;font-size:clamp(27px,3.3vw,36px)}.digit{font-weight:500}.subheading{font-weight:500}.subheading .dot{box-shadow:none}
+.primary{background:#b6cbbd;box-shadow:none;font-weight:650;border-radius:12px}.secondary,.iconbutton{border-radius:12px}
+.settings{border-radius:16px;box-shadow:none}.footer .quote{font-weight:400;font-style:italic;color:var(--muted)}
+@media(max-width:840px){.figure-svg.photo-figure{max-height:340px}}
+@media(max-width:470px){.figure-svg.photo-figure{max-height:275px}.heading h1{font-size:30px}.phase{font-size:29px}}
 </style>
 </head>
 <body>
@@ -34,54 +48,7 @@ main {max-width:1110px;margin:0 auto;padding:27px 25px 40px;} .nav{display:flex;
   <div class="visual" id="visual" aria-label="Animated seated person demonstrating gentle breathing">
     <div class="visual-top"><span class="pill">FOLLOW THE MOVEMENT</span><span class="hint" id="motionHint">Chest softly rises and falls</span></div>
     <div class="figure-wrap">
-      <svg class="figure-svg" id="figure" viewBox="0 0 460 460" role="img" aria-label="Seated man, chest expands while inhaling and releases while exhaling">
-        <defs>
-          <radialGradient id="auragrad"><stop offset="0" stop-color="#66d9bb" stop-opacity=".26"/><stop offset=".67" stop-color="#56d4b9" stop-opacity=".11"/><stop offset="1" stop-color="#56d4b9" stop-opacity="0"/></radialGradient>
-          <linearGradient id="shirt" x1="0" x2="1" y1=".15" y2="1"><stop stop-color="#a7e8d7"/><stop offset=".45" stop-color="#6bbab2"/><stop offset="1" stop-color="#367986"/></linearGradient>
-          <linearGradient id="face" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edbc9d"/><stop offset="1" stop-color="#bc7d61"/></linearGradient>
-          <linearGradient id="pants" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#4a8294"/><stop offset="1" stop-color="#1d5365"/></linearGradient>
-          <linearGradient id="sleeve" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#78cabe"/><stop offset="1" stop-color="#3a8890"/></linearGradient>
-          <filter id="glow"><feGaussianBlur stdDeviation="5"/></filter>
-        </defs>
-        <ellipse cx="230" cy="429" rx="173" ry="16" fill="#041e28" opacity=".33"/>
-        <g class="aura" id="aura"><circle cx="230" cy="235" r="178" fill="url(#auragrad)"/><circle cx="230" cy="242" r="128" fill="none" stroke="#8fe5c4" stroke-opacity=".14" stroke-width="1.6"/><circle cx="230" cy="241" r="156" fill="none" stroke="#8fe5c4" stroke-opacity=".075" stroke-width="1"/></g>
-        <g fill="none" stroke="#9bf6e0" stroke-width="2.7" stroke-linecap="round" class="airflow"><path d="M71 203C102 188 131 194 159 215"/><path d="M73 228c36-14 52-11 82 2"/><path d="M388 203c-31-15-60-9-88 12"/><path d="M389 228c-36-14-52-11-82 2"/></g>
-        <!-- Cross-legged silhouette -->
-        <path d="M119 344c-20 1-72 25-76 58-4 29 43 37 97 31l92-4 91 4c56 5 97-5 94-31-3-32-59-57-80-58" fill="url(#pants)" stroke="#276275" stroke-width="3"/>
-        <path d="M81 410c47-24 100-27 149-13 49-14 105-10 151 13" fill="none" stroke="#88c4bc" stroke-opacity=".27" stroke-width="3"/>
-        <!-- relaxed arms behind torso -->
-        <path d="M162 238c-35 0-47 38-63 90-5 18-4 47 8 59 16 17 35-1 44-22l27-71" fill="url(#sleeve)" stroke="#2c7c86" stroke-width="3"/>
-        <path d="M298 238c35 0 48 39 64 90 5 18 4 47-9 59-15 16-34-1-43-22l-26-71" fill="url(#sleeve)" stroke="#2c7c86" stroke-width="3"/>
-        <!-- Neck -->
-        <path d="M207 194v33c0 13 8 21 23 21s23-8 23-21v-33" fill="url(#face)"/>
-        <!-- torso expands visibly -->
-        <g class="torso" id="torso">
-          <path d="M179 230c-23 0-41 16-43 41l-10 79c0 11 8 18 17 18h174c9 0 17-7 17-18l-10-79c-3-25-20-41-43-41-14 2-26 14-51 14s-37-12-51-14Z" fill="url(#shirt)" stroke="#397e86" stroke-width="2.8"/>
-          <path d="M189 230c8 23 20 33 41 33s34-10 41-33" stroke="#d1f5e7" stroke-opacity=".72" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <path d="M147 273c-3 34-6 57-5 73M313 273c3 34 6 57 5 73" fill="none" stroke="#d9f5e9" stroke-opacity=".23" stroke-width="2.8"/>
-          <ellipse class="belly-glow" id="bellyGlow" cx="230" cy="307" rx="54" ry="36" fill="#e4fff2" opacity=".085"/>
-          <path d="M190 293q40 20 80 0" fill="none" stroke="#dcfff2" stroke-opacity=".22" stroke-width="2"/>
-          <path d="M198 316q32 13 64 0" fill="none" stroke="#dcfff2" stroke-opacity=".18" stroke-width="2"/>
-        </g>
-        <!-- Lower arms and hands resting on knees -->
-        <path d="M118 343c-10 9-8 28 3 33 18 7 40 3 57 1" fill="none" stroke="#e4ad90" stroke-width="19" stroke-linecap="round"/>
-        <path d="M341 343c10 9 8 28-3 33-18 7-40 3-57 1" fill="none" stroke="#e4ad90" stroke-width="19" stroke-linecap="round"/>
-        <ellipse cx="180" cy="377" rx="19" ry="10" fill="#d9a183" transform="rotate(4 180 377)"/>
-        <ellipse cx="280" cy="377" rx="19" ry="10" fill="#d9a183" transform="rotate(-4 280 377)"/>
-        <!-- ears -->
-        <ellipse cx="181" cy="161" rx="11" ry="17" fill="#bd8569"/><ellipse cx="279" cy="161" rx="11" ry="17" fill="#bd8569"/>
-        <!-- face -->
-        <path d="M178 131c0-37 21-58 52-58 32 0 53 22 53 59v33c0 41-20 62-53 62s-52-21-52-62Z" fill="url(#face)" stroke="#af795f" stroke-width="1.7"/>
-        <!-- dark textured hair -->
-        <path d="M176 142c-7-41 12-72 55-72 39 0 60 30 52 70-5-10-11-26-13-33-17 9-49 13-77 4-3 14-8 23-17 31Z" fill="#26363b"/>
-        <path d="M181 119c6-36 42-48 74-31" fill="none" stroke="#58605e" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
-        <!-- peaceful eyes -->
-        <path d="M198 158c7 5 15 5 22 0M240 158c7 5 15 5 22 0" fill="none" stroke="#583b36" stroke-width="3" stroke-linecap="round"/>
-        <path d="M228 162l-3 19c3 3 6 4 10 1" fill="none" stroke="#a86b59" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M216 196q14 8 29 0" fill="none" stroke="#8e574b" stroke-width="2.8" stroke-linecap="round"/>
-        <!-- subtle cheek warmth -->
-        <ellipse cx="197" cy="183" rx="14" ry="7" fill="#dd917f" opacity=".18"/><ellipse cx="263" cy="183" rx="14" ry="7" fill="#dd917f" opacity=".18"/>
-      </svg>
+      <svg class="figure-svg photo-figure" id="figure" viewBox="0 0 460 460" role="img" aria-label="Photorealistic seated man with gently animated breathing"><defs><filter id="chestBreath" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feImage href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22460%22%20height%3D%22460%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22l%22%3E%3Cstop%20stop-color%3D%22%23ff8080%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23808080%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22r%22%3E%3Cstop%20stop-color%3D%22%23008080%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23808080%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22%23808080%22%20d%3D%22M0%200h460v460H0z%22%2F%3E%3Cellipse%20cx%3D%22180%22%20cy%3D%22226%22%20rx%3D%2237%22%20ry%3D%2281%22%20fill%3D%22url(%23l)%22%2F%3E%3Cellipse%20cx%3D%22280%22%20cy%3D%22226%22%20rx%3D%2237%22%20ry%3D%2281%22%20fill%3D%22url(%23r)%22%2F%3E%3C%2Fsvg%3E" x="0" y="0" width="460" height="460" result="map"/><feDisplacementMap id="chestDisplacement" in="SourceGraphic" in2="map" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></defs><g id="aura"></g><g id="torso" filter="url(#chestBreath)"><image href="assets/breathing-man.png" x="0" y="0" width="460" height="460" preserveAspectRatio="xMidYMid meet"/></g><g id="bellyGlow"></g></svg>
     </div>
     <div class="figure-base" id="figureCaption"><strong>In through the nose.</strong> Out gently and easily.</div>
   </div>
@@ -176,10 +143,10 @@ function update(){
  $('resetBtn').disabled=status==='idle';
  $('motionHint').textContent=status==='paused'?'Take your time':status==='done'?'You made space for yourself':inPhase&&active?'Softly expanding':'Chest softly rises and falls';
  if(!reduceMotion.matches){const breath=active?(inPhase?progress:1-progress):0;
- $('torso').style.transform=`scale(${1+breath*.057},${1+breath*.019})`;
+ $('chestDisplacement').setAttribute('scale',String(breath*10));
  $('aura').style.transform=`scale(${.94+breath*.18})`;
  $('bellyGlow').style.transform=`scale(${1+breath*.1},${1+breath*.08})`;
- }else{$('torso').style.transform='';$('aura').style.transform='';$('bellyGlow').style.transform='';}
+ }else{$('chestDisplacement').setAttribute('scale','0');$('torso').style.transform='';$('aura').style.transform='';$('bellyGlow').style.transform='';}
 }
 function apply(){if(session.status==='done'){reset();}save();renderSettings();if(['idle','done'].includes(session.status)){session.settledIn=config.inhale;session.settledOut=config.exhale;session.settledMins=config.mins;}update()}
 $('startBtn').addEventListener('click',start);$('resetBtn').addEventListener('click',reset);

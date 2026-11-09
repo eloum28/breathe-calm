@@ -1,14 +1,14 @@
 # Breathe Calm
 
-A self-contained, responsive guided-breathing app with an animated seated person, a large second-by-second countdown, adjustable inhale/exhale pacing, and controls for Start, Pause, Resume, and Reset.
+A responsive static guided-breathing app with a photorealistic seated person, a large second-by-second countdown, adjustable inhale/exhale pacing, and controls for Start, Pause, Resume, and Reset.
 
 ## Use
 
-Open `index.html` in a browser or host the repository as a static site. No build, packages, API keys, database, or backend are required.
+Open `index.html` in a browser or host the repository as a static site. Keep the `assets/` folder beside `index.html`. No build, packages, API keys, database, or backend are required.
 
 ## Features
 
-- Animated figure that gently expands while inhaling and relaxes while exhaling
+- Photorealistic AI-generated figure with subtle chest displacement synchronized to the breathing timer
 - Inhale/exhale countdown and session-progress indicator
 - Start, Pause, Resume, and Reset
 - Preset rhythms (4/6, 4/4, 3/5) and custom duration sliders
@@ -29,3 +29,7 @@ Vercel may generate a unique project hostname; verify the actual deployment URL 
 ## Safety
 
 Breathe gently and comfortably. Stop if you feel dizzy, short of breath, or uncomfortable. This is a relaxation guide, not medical treatment.
+
+## Visual asset
+
+`assets/breathing-man.png` was generated with the built-in image generation tool. It is a synthetic photographic image, not footage of a real breathing instructor. The app animates a small region of the chest; pause and reduced-motion settings stop that movement.
