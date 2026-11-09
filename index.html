@@ -60,6 +60,8 @@ body{background:var(--bg)}
  .footer{margin-top:14px;font-size:10px;gap:7px}.footer .quote{font-size:12px}
 }
 @media(max-width:840px) and (max-height:650px){.columns .visual{height:170px}.clock{width:106px;height:106px;margin-top:6px}.digit{font-size:55px}.phase{font-size:22px}.phasehelp{font-size:10px}.bars{margin:6px 0 10px}.stats{margin-top:10px;padding-top:9px}}
+
+.controls{flex-wrap:wrap}.quick-calm{flex:0 0 100%;min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--glass);color:var(--ink);font-weight:650;display:flex;justify-content:center;align-items:center;gap:12px}.quick-calm span{font-size:11px;color:var(--muted);font-weight:400}.quick-calm:hover{background:var(--line)}
 </style>
 </head>
 <body>
@@ -81,7 +83,7 @@ body{background:var(--bg)}
     <div class="phase-block"><div class="phase" id="phaseText" aria-live="polite" aria-atomic="true">Ready when you are</div><div class="phasehelp" id="phaseHelp">Take a comfortable position and press Start.</div></div>
     <div class="clock"><svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-bg" cx="90" cy="90" r="78" fill="none" stroke-width="7"/><circle id="dial" class="dial-progress" cx="90" cy="90" r="78" fill="none" stroke-width="7" stroke-dasharray="490.088" stroke-dashoffset="490.088"/></svg><div style="display:flex;align-items:center;flex-direction:column"><div class="digit" id="counter" aria-label="Seconds remaining">—</div><div class="seconds">SECONDS</div></div></div>
     <div class="bars" aria-hidden="true"><span class="barlabel">IN</span><div class="bar" id="inBar"><i id="inFill"></i></div><div class="bar" id="outBar"><i id="outFill"></i></div><span class="barlabel">OUT</span></div>
-    <div class="controls"><button class="primary" id="startBtn"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5a1 1 0 0 1 1.54-.84l10 6.5a1 1 0 0 1 0 1.68l-10 6.5A1 1 0 0 1 8 18.5Z"/></svg><span id="startText">Start breathing</span></button><button class="secondary" id="resetBtn" aria-label="Reset breathing session" title="Reset session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button></div>
+    <div class="controls"><button class="quick-calm" id="quickCalmBtn" title="Start a fresh two-minute session: inhale 3 seconds, exhale 5 seconds">Quick Calm <span>3 / 5 · 2 min</span></button><button class="primary" id="startBtn"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5a1 1 0 0 1 1.54-.84l10 6.5a1 1 0 0 1 0 1.68l-10 6.5A1 1 0 0 1 8 18.5Z"/></svg><span id="startText">Start breathing</span></button><button class="secondary" id="resetBtn" aria-label="Reset breathing session" title="Reset session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button></div>
     <div class="stats"><div><div class="stat-label">SESSION LEFT</div><div class="stat-val" id="timeLeft">2:00</div></div><div><div class="stat-label">BREATHS COMPLETED</div><div class="stat-val" id="cycles">0</div></div></div>
     <div class="track" aria-label="Session progress"><i id="sessionTrack"></i></div>
   </div>
@@ -172,6 +174,7 @@ function update(){
  }else{$('chestDisplacement').setAttribute('scale','0');$('torso').style.transform='';$('aura').style.transform='';$('bellyGlow').style.transform='';}
 }
 function apply(){if(session.status==='done'){reset();}save();renderSettings();if(['idle','done'].includes(session.status)){session.settledIn=config.inhale;session.settledOut=config.exhale;session.settledMins=config.mins;}update()}
+$('quickCalmBtn').addEventListener('click',()=>{config.inhale=3;config.exhale=5;config.mins=2;reset();save();start();});
 $('startBtn').addEventListener('click',start);$('resetBtn').addEventListener('click',reset);
 $('themeBtn').addEventListener('click',()=>{config.theme=config.theme==='dark'?'light':'dark';setTheme();save()});
 $('presets').addEventListener('click',e=>{let b=e.target.closest('button[data-in]');if(!b)return;config.inhale=+b.dataset.in;config.exhale=+b.dataset.out;apply()});
